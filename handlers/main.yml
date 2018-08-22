@@ -1,0 +1,12 @@
+---
+- name: Restart guest VM
+  local_action:
+    module: vcenter
+    vcenter_hostname: '{{vcenter_hostname}}'
+    username: '{{vcenter_username}}'
+    password: '{{vcenter_password}}'
+    datacenter_name: '{{ vmdatacenter }}'
+    datastore: '{{ datastore }}'
+    cluster_name: '{{ vmcluster }}'
+    vm_name: '{{ inventory_hostname }}'
+    action: 'restart'
