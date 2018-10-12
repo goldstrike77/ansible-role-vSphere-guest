@@ -24,6 +24,7 @@
     parent_folder_name: '{{ host_group|upper }}'
   run_once: true
   no_log: true
+  when: facts.instance is not defined
 
 - name: Create and Configure a guest VM
   local_action:
@@ -60,9 +61,9 @@
   register: result
   ignore_errors: true
   no_log: true
+  when: facts.instance is not defined
 
 - name: Reconfigure the Disk on guest VM
-  when: result|changed
   local_action:
     module: vsphere_guest
     validate_certs: false
@@ -83,3 +84,4 @@
     esxi:
       datacenter: '{{ vmdatacenter }}'
   no_log: true
+  when: facts.instance is not defined
