@@ -14,74 +14,8 @@
   register: facts
   no_log: true
 
-- name: Create a folder on VCenter datacenter
-  local_action:
-    module: vsphere_create_folder
-    host: '{{ vcenter_hostname }}'
-    login: '{{ vcenter_username }}'
-    password: '{{ vcenter_password }}'
-    datacenter_name: '{{ vmdatacenter }}'
-    parent_folder_name: '{{ host_group|upper }}'
-  run_once: true
-  no_log: true
-  when: facts.instance is not defined
-
-- name: Create and Configure a guest VM
-  local_action:
-    module: vcenter
-    vcenter_hostname: '{{ vcenter_hostname }}'
-    username: '{{ vcenter_username }}'
-    password: '{{ vcenter_password }}'
-    action: clone
-    vm_name: '{{ inventory_hostname|upper }}' 
-    template: '{{ template }}'
-    vnics:
-      nic1:
-        vswitch: '{{ network }}'
-        ip: '{{ ansible_host }}'
-        gateway: '{{ gateway }}'
-        netmask: '{{ netmask }}'
-        network_type: '{{ network_type }}'
-    dns_list:
-      - '{{ dns1 }}'
-      - '{{ dns2 }}'
-    suffix_list:
-      - '{{ suffix }}'
-    datacenter_name: '{{ vmdatacenter }}'
-    cluster_name: '{{ vmcluster }}'
-    datastore: '{{ datastore }}'
-    num_cpus: '{{ cpucount }}'
-    memory_mb: '{{ memory|int * 1024 }}'
-    domain_name: '{{ domain }}'
-    os_family: '{{ family }}'
-    login_password: '{{ ansible_password }}'
-    full_name: '--'
-    org_name: '--'
-    vm_folder: '{{ host_group|upper }}'
-  register: result
-  ignore_errors: true
-  no_log: true
-  when: facts.instance is not defined
-
-- name: Reconfigure the Disk on guest VM
-  local_action:
-    module: vsphere_guest
-    validate_certs: false
-    vcenter_hostname: '{{ vcenter_hostname }}'
-    username: '{{ vcenter_username }}'
-    password: '{{ vcenter_password }}'
-    guest: '{{ inventory_hostname|upper }}'
-    state: reconfigured
-    vm_disk:
-      disk1:
-        size_gb: '{{ disk1 }}'
-        type: thin
-        datastore: '{{ datastore }}'
-      disk2:
-        size_gb: '{{ disk2 }}'
-        type: thin
-        datastore: '{{ datastore }}'
-    esxi:
-      datacenter: '{{ vmdatacenter }}'
-  no_log: true
+- block:
+    - include: 'folder.yml'
+    - include: 'create.yml'
+    - include: 'edit.yml'
   when: facts.instance is not defined

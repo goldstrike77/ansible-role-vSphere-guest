@@ -1,0 +1,35 @@
+---
+- name: Create and Configure a guest VM
+  local_action:
+    module: vcenter
+    vcenter_hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    action: clone
+    vm_name: '{{ inventory_hostname|upper }}' 
+    template: '{{ template }}'
+    vnics:
+      nic1:
+        vswitch: '{{ network }}'
+        ip: '{{ ansible_host }}'
+        gateway: '{{ gateway }}'
+        netmask: '{{ netmask }}'
+        network_type: '{{ network_type }}'
+    dns_list:
+      - '{{ dns1 }}'
+      - '{{ dns2 }}'
+    suffix_list:
+      - '{{ suffix }}'
+    datacenter_name: '{{ vmdatacenter }}'
+    cluster_name: '{{ vmcluster }}'
+    datastore: '{{ datastore }}'
+    num_cpus: '{{ cpucount }}'
+    memory_mb: '{{ memory|int * 1024 }}'
+    domain_name: '{{ domain }}'
+    os_family: '{{ family }}'
+    login_password: '{{ ansible_password }}'
+    full_name: '--'
+    org_name: '--'
+    vm_folder: '{{ host_group|upper }}'
+  ignore_errors: true
+  no_log: true
