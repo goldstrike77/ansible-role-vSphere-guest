@@ -1,24 +1,29 @@
 ---
-vcenter_hostname: '1.1.1.1'
-vcenter_username: 'root'
-vcenter_password: 'password'
-vmdatacenter: 'DC'
-vmcluster: 'cluster'
-host_group: 'group'
-template: 'template'
-vswitch: 'vlan99'
-ip: '192.168.1.10'
-gateway: '192.168.1.1'
-netmask: '255.255.255.0'
-network_type: 'dvs'
-dns1: '223.5.5.5'
-dns2: '223.6.6.6'
-suffix: 'domain.com'
-datastore: 'storage-01'
-cpucount: '2'
-memory: '4'
-disk1: '34'
-disk2: '100'
-domain: 'domain.com'
-family: 'linux'
-ansible_password: 'password'
+# General parameters #
+family: 'linux' # linux or windows
+
+# VMware vSphere vCenter parameters #
+host_group: 'group' # Folder
+vcenter_hostname: '1.1.1.1' # IP address
+vcenter_password: 'password' # Login password
+vcenter_username: 'root' # Login account
+vmcluster: 'cluster' # Cluster
+vmdatacenter: 'DC' # Datacenter
+
+# Virtual machine specifications #
+ansible_host: '192.168.1.10' # Virtual machine IP
+ansible_password: 'password' # Only for Microsoft Windows guest OS
+cpucount: '2' # Virtual processors
+datastore: 'storage-01' # VMware vSphere storage
+disk1: '34' # The OS disc space in GB
+disk2: '100' # The Data disc space in GB
+dns1: '223.5.5.5' # Virtual machine DNS1
+dns2: '223.6.6.6' # Virtual machine DNS2
+domain: 'domain.com' # Only for linux guest OS
+gateway: '192.168.1.1' # Virtual machine gateway
+memory: '4' # Memory size in GB
+netmask: '255.255.255.0' # Virtual machine netmask
+network_type: 'dvs' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
+suffix: 'domain.com' # Virtual machine suffix
+template: 'template' # VMware template name
+vswitch: 'vlan99' # VMware vSwitch name
