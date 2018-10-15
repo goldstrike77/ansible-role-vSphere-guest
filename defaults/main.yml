@@ -23,7 +23,7 @@ domain: 'domain.com' # Only for linux guest OS
 gateway: '192.168.1.1' # Virtual machine gateway
 memory: '4' # Memory size in GB
 netmask: '255.255.255.0' # Virtual machine netmask
+network: 'vlan99' # VMware vSwitch name
 network_type: 'dvs' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
 suffix: 'domain.com' # Virtual machine suffix
 template: 'template' # VMware template name
-vswitch: 'vlan99' # VMware vSwitch name
