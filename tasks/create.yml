@@ -16,8 +16,7 @@
         netmask: '{{ netmask }}'
         network_type: '{{ network_type }}'
     dns_list:
-      - '{{ dns1 }}'
-      - '{{ dns2 }}'
+      - '{{ dns }}'
     suffix_list:
       - '{{ suffix }}'
     datacenter_name: '{{ vmdatacenter }}'

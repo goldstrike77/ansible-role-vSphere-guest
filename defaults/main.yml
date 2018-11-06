@@ -17,8 +17,11 @@ cpucount: '2' # Virtual processors
 datastore: 'storage-01' # VMware vSphere storage
 disk1: '34' # The OS disc space in GB
 disk2: '100' # The Data disc space in GB
-dns1: '223.5.5.5' # Virtual machine DNS1
-dns2: '223.6.6.6' # Virtual machine DNS2
+dns: # Virtual machine DNS
+  - '223.5.5.5'
+  - '223.6.6.6'
+  - '8.8.8.8'
+  - '8.8.4.4'
 domain: 'domain.com' # Only for linux guest OS
 gateway: '192.168.1.1' # Virtual machine gateway
 memory: '4' # Memory size in GB
