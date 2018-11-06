@@ -21,12 +21,12 @@ dns_server: # Virtual machine DNS
   - '223.5.5.5'
   - '223.6.6.6'
   - '8.8.8.8'
+dns_suffix:  # Virtual machine suffix
+  - 'domain.com'
 domain: 'domain.com' # Only for linux guest OS
 gateway: '192.168.1.1' # Virtual machine gateway
 memory: '4' # Memory size in GB
 netmask: '255.255.255.0' # Virtual machine netmask
 network: 'vlan99' # VMware vSwitch name
 network_type: 'dvs' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
-dns_suffix:  # Virtual machine suffix
-  - 'domain.com'
 template: 'template' # VMware template name
