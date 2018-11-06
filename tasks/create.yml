@@ -15,10 +15,8 @@
         gateway: '{{ gateway }}'
         netmask: '{{ netmask }}'
         network_type: '{{ network_type }}'
-    dns_list:
-      - '{{ dns }}'
-    suffix_list:
-      - '{{ suffix }}'
+    dns_list: '{{ dns_server }}'
+    suffix_list: '{{ dns_suffix }}'
     datacenter_name: '{{ vmdatacenter }}'
     cluster_name: '{{ vmcluster }}'
     datastore: '{{ datastore }}'
