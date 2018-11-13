@@ -1,7 +1,7 @@
 ansible-vSphere-guest
-=========
+=====================
 
-Do not use in production environment.
+Testing and development purposes only, should not be used in a production environment.
 
 Create new virtual machines from templates on VMware vCenter.
 
