@@ -1,4 +1,6 @@
-ansible-vSphere-guest
+<p><img src="https://raw.githubusercontent.com/goldstrike77/goldstrike77.github.io/master/img/logo/logo_vmware_vsphere.png" align="right" /></p>
+
+ansible-role-vSphere-guest
 =====================
 
 Testing and development purposes only, should not be used in a production environment.
