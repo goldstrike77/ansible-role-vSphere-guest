@@ -1,4 +1,4 @@
-<p><img src="https://raw.githubusercontent.com/goldstrike77/goldstrike77.github.io/master/img/logo/logo_vmware_vsphere.png" align="right" /></p>
+<p><img src="https://raw.githubusercontent.com/goldstrike77/goldstrike77.github.io/master/img/logo/logo_vmware.png" align="right" /></p>
 
 ansible-role-vSphere-guest
 =====================
