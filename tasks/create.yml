@@ -1,32 +1,41 @@
 ---
 - name: Create and Configure a guest VM
-  local_action:
-    module: vcenter
-    vcenter_hostname: '{{ vcenter_hostname }}'
+  vmware_guest:
+    hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
-    action: clone
-    vm_name: '{{ inventory_hostname|upper }}'
+    datacenter: '{{ vmdatacenter }}'
+    cluster: '{{ vmcluster }}'
+    folder: '{{ host_group|upper }}'
+    name: '{{ inventory_hostname|upper }}'
     template: '{{ template }}'
-    vnics:
-      nic1:
-        vswitch: '{{ network }}'
-        ip: '{{ ansible_host }}'
-        gateway: '{{ gateway }}'
-        netmask: '{{ netmask }}'
-        network_type: '{{ network_type }}'
-    dns_list: '{{ dns_server }}'
-    suffix_list: '{{ dns_suffix }}'
-    datacenter_name: '{{ vmdatacenter }}'
-    cluster_name: '{{ vmcluster }}'
-    datastore: '{{ datastore }}'
-    num_cpus: '{{ cpucount }}'
-    memory_mb: '{{ memory|int * 1024 }}'
-    domain_name: '{{ domain }}'
-    os_family: '{{ family }}'
-    login_password: '{{ ansible_password }}'
-    full_name: '--'
-    org_name: '--'
-    vm_folder: '{{ host_group|upper }}'
-  ignore_errors: true
-  no_log: true
+    validate_certs: 'no'
+    state: 'poweredon'
+    disk:
+      - disk1:
+        size_gb: '{{ disk1 }}'
+        type: '{{ disktype }}'
+        datastore: '{{ datastore }}'
+      - disk2:
+        size_gb: '{{ disk2 }}'
+        type: '{{ disktype }}'
+        datastore: '{{ datastore }}'
+    hardware:
+      memory_mb: '{{ memory|int * 1024 }}'
+      num_cpus: '{{ cpucount }}'
+    networks:
+    - name: '{{ network }}'
+      ip: '{{ ansible_host }}'
+      netmask: '{{ netmask }}'
+      gateway: '{{ gateway }}'
+      dns_servers: '{{ dns_server }}'
+      type: 'static'
+    customization:
+      domain: '{{ domain }}'
+      dns_suffix: '{{ dns_suffix }}'
+      dns_servers: '{{ dns_server }}'
+      password: '{{ ansible_password }}'
+      full_name: '--'
+      org_name: '--'
+    wait_for_ip_address: 'yes'
+  delegate_to: 'localhost'

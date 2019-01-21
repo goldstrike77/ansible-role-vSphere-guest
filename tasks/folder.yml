@@ -1,11 +1,16 @@
 ---
 - name: Create a folder on VCenter datacenter
-  local_action:
-    module: vsphere_create_folder
-    host: '{{ vcenter_hostname }}'
-    login: '{{ vcenter_username }}'
+  vcenter_folder:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
-    datacenter_name: '{{ vmdatacenter }}'
-    parent_folder_name: '{{ host_group|upper }}'
+    datacenter: '{{ vmdatacenter }}'
+    folder_name: '{{ host_group|upper }}'
+    folder_type: 'vm'
+    state: 'present'
+    validate_certs: no
+  delegate_to: 'localhost'
+  changed_when: false
+  failed_when: false
   run_once: true
   no_log: true

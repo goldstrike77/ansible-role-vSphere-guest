@@ -17,5 +17,4 @@
 - block:
     - include: 'folder.yml'
     - include: 'create.yml'
-    - include: 'edit.yml'
   when: facts.instance is not defined
