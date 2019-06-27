@@ -3,7 +3,6 @@
 family: 'linux' # linux or windows
 
 # VMware vSphere vCenter parameters #
-host_group: 'group' # Folder
 vcenter_hostname: '1.1.1.1' # IP address
 vcenter_password: 'password' # Login password
 vcenter_username: 'root' # Login account
