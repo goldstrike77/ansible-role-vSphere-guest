@@ -13,9 +13,10 @@ vmdatacenter: 'DC' # Datacenter
 ansible_host: '192.168.1.10' # Virtual machine IP
 ansible_password: 'password' # Only for Microsoft Windows guest OS
 cpucount: '2' # Virtual processors
-datastore: 'storage-01' # VMware vSphere storage
-disk1: '34' # The OS disc space in GB
-disk2: '100' # The Data disc space in GB
+datastore: 'LocalStorage' # VMware vSphere storage
+disktype: 'thin' # Disk type
+disk1: '50' # The OS disc space in GB
+disk2: '200' # The Data disc space in GB
 dns_server: # Virtual machine DNS
   - '223.5.5.5'
   - '223.6.6.6'
@@ -26,6 +27,6 @@ domain: 'domain.com' # Only for linux guest OS
 gateway: '192.168.1.1' # Virtual machine gateway
 memory: '4' # Memory size in GB
 netmask: '255.255.255.0' # Virtual machine netmask
-network: 'vlan99' # VMware vSwitch name
-network_type: 'dvs' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
-template: 'template' # VMware template name
+network: 'Vlan0' # VMware vSwitch name
+network_type: 'standard' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
+template: 'template_CentOS7' # VMware template name
