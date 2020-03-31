@@ -23,7 +23,7 @@ dns_server: # Virtual machine DNS
   - '8.8.8.8'
 dns_suffix:  # Virtual machine suffix
   - 'dc01.local'
-domain: 'dc01.local' # Only for linux guest OS
+domain: 'node.dc01.local' # Only for linux guest OS
 gateway: '192.168.1.1' # Virtual machine gateway
 memory: '4' # Memory size in GB
 netmask: '255.255.255.0' # Virtual machine netmask
