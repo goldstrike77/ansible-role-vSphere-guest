@@ -6,7 +6,7 @@
     password: '{{ vcenter_password }}'
     datacenter: '{{ vmdatacenter }}'
     cluster: '{{ vmcluster }}'
-    folder: '{{ group_names[0] | upper }}'
+    folder: '{{ group_names[-1] | upper }}'
     name: '{{ inventory_hostname | upper }}'
     template: '{{ template }}'
     validate_certs: 'no'

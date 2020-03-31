@@ -2,7 +2,7 @@
 - name: Gather guest VM facts from VMware vCenter
   vmware_guest_facts:
     name: '{{ inventory_hostname | upper }}'
-    folder: '{{ vmdatacenter }}/vm/{{ group_names[0] | upper }}'
+    folder: '{{ vmdatacenter }}/vm/{{ group_names[-1] | upper }}'
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
