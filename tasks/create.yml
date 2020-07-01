@@ -32,8 +32,8 @@
       type: 'static'
     customization:
       hostname: '{{ inventory_hostname | upper }}'
-      domain: '{{ domain }}'
-      dns_suffix: '{{ dns_suffix }}'
+      domain: 'node.{{ datacenter }}.{{ domain }}'
+      dns_suffix: '{{ datacenter }}.{{ domain }}'
       dns_servers: '{{ dns_server }}'
       password: '{{ ansible_password }}'
       full_name: '--'
