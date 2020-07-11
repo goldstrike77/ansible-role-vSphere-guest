@@ -1,31 +1,29 @@
 ---
 # General parameters #
-family: 'linux' # linux or windows
+ansible_host: '192.168.1.10' # Defines the Virtual machine static IP.
+ansible_password: 'password' # Only for Microsoft Windows guest OS.
+datacenter: 'dc01' # Define the DataCenter.
+domain: 'local' # Define the Domain.
 
 # VMware vSphere vCenter parameters #
-vcenter_hostname: '1.1.1.1' # IP address
-vcenter_password: 'password' # Login password
-vcenter_username: 'root' # Login account
-vmcluster: 'cluster' # Cluster
-vmdatacenter: 'DC' # Datacenter
+vcenter_hostname: '1.1.1.1' # Defines the hostname or IP address of the vSphere vCenter server.
+vcenter_username: 'root' # Defines the username of the vSphere vCenter server.
+vcenter_password: 'password' # Defines the password of the vSphere vCenter server.
+vcenter_vmcluster: 'cluster' # Defines the cluster name where the virtual machine will run.
+vcenter_vmdatacenter: 'DC' # Defines the datacenter for the deploy operation.
 
 # Virtual machine specifications #
-ansible_host: '192.168.1.10' # Virtual machine IP
-ansible_password: 'password' # Only for Microsoft Windows guest OS
-cpucount: '2' # Virtual processors
-datastore: 'LocalStorage' # VMware vSphere storage
-disktype: 'thin' # Disk type
-disk1: '50' # The OS disc space in GB
-disk2: '200' # The Data disc space in GB
-dns_server: # Virtual machine DNS
+vm_cpucount: '2' # Defines the number of CPUs.
+vm_datastore: 'LocalStorage' # Defines the name of datastore which will be used for the disk.
+vm_disktype: 'thin' # Defines the disk type, Valid attributes are thin, eagerzeroedthick and none.
+vm_disk1: '50' # Defines the OS disc space in GB.
+vm_disk2: '200' # Defines the Data disc space in GB.
+vm_dns_server: # Defines a list of DNS servers to configure.
   - '223.5.5.5'
   - '223.6.6.6'
   - '8.8.8.8'
-datacenter: 'dc01' # Define the DataCenter.
-domain: 'local' # Define the Domain.
-gateway: '192.168.1.1' # Virtual machine gateway
-memory: '4' # Memory size in GB
-netmask: '255.255.255.0' # Virtual machine netmask
-network: 'vlan0' # VMware vSwitch name
-network_type: 'standard' # dvs(Distributed Virtual Switche) or standard(Standard Switche)
-template: 'template_CentOS7' # VMware template name
+vm_gateway: '192.168.1.1' # Static gateway.
+vm_memory: '4' # Defines the Memory size in GB.
+vm_netmask: '255.255.255.0' # Static netmask.
+vm_network: 'vlan0' # Defines the VMware vSwitch name.
+vm_template: 'template_CentOS7' # Defines the template name.

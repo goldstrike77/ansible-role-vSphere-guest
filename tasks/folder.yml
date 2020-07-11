@@ -1,14 +1,14 @@
 ---
-- name: Create a folder on VCenter datacenter
+- name: Create a folder on VCenter datacenter.
   vcenter_folder:
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
-    datacenter: '{{ vmdatacenter }}'
+    datacenter: '{{ vcenter_vmdatacenter }}'
     folder_name: '{{ group_names[-1] | upper }}'
     folder_type: 'vm'
     state: 'present'
-    validate_certs: no
+    validate_certs: 'no'
   delegate_to: 'localhost'
   changed_when: false
   failed_when: false
