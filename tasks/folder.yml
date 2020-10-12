@@ -5,7 +5,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     datacenter: '{{ vcenter_vmdatacenter }}'
-    folder_name: '{{ group_names[-1] | upper }}'
+    folder_name: '{{ group_names[0] | upper }}'
     folder_type: 'vm'
     state: 'present'
     validate_certs: 'no'
