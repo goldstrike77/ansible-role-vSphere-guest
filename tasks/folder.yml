@@ -1,16 +1,31 @@
 ---
-- name: Create a folder on VCenter datacenter.
+- name: Create a Project folder on VCenter datacenter.
   vcenter_folder:
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     datacenter: '{{ vcenter_vmdatacenter }}'
-    folder_name: '{{ group_names[0] | upper }}'
+    folder_name: '{{ group_names[0] | title }}'
     folder_type: 'vm'
     state: 'present'
     validate_certs: 'no'
   delegate_to: 'localhost'
   changed_when: false
   failed_when: false
-  run_once: true
+  no_log: true
+
+- name: Create a Group folder on VCenter datacenter.
+  vcenter_folder:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ vcenter_vmdatacenter }}'
+    parent_folder: '{{ group_names[0] | title }}'
+    folder_name: '{{ group_names[-1] | title }}'
+    folder_type: 'vm'
+    state: 'present'
+    validate_certs: 'no'
+  delegate_to: 'localhost'
+  changed_when: false
+  failed_when: false
   no_log: true

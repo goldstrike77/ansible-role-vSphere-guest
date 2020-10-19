@@ -1,7 +1,5 @@
 ---
 # General parameters #
-ansible_host: '192.168.1.10' # Defines the Virtual machine static IP.
-ansible_password: 'password' # Only for Microsoft Windows guest OS.
 datacenter: 'dc01' # Define the DataCenter.
 domain: 'local' # Define the Domain.
 
@@ -13,6 +11,7 @@ vcenter_vmcluster: 'cluster' # Defines the cluster name where the virtual machin
 vcenter_vmdatacenter: 'DC' # Defines the datacenter for the deploy operation.
 
 # Virtual machine specifications #
+vm_password: 'password' # Only for Microsoft Windows guest OS.
 vm_cpucount: '2' # Defines the number of CPUs.
 vm_datastore: 'LocalStorage' # Defines the name of datastore which will be used for the disk.
 vm_disktype: 'thin' # Defines the disk type, Valid attributes are thin, eagerzeroedthick and none.

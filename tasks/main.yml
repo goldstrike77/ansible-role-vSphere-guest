@@ -2,7 +2,7 @@
 - name: Gather guest VM facts from VMware vCenter.
   vmware_guest_facts:
     name: '{{ inventory_hostname | upper }}'
-    folder: '{{ vcenter_vmdatacenter }}/vm/{{ group_names[0] | upper }}'
+    folder: '{{ vcenter_vmdatacenter }}/vm/{{ group_names[0] | title }}/{{ group_names[-1] | title }}'
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
@@ -11,11 +11,11 @@
   delegate_to: 'localhost'
   changed_when: false
   failed_when: false
-  register: facts
+  register: vmware_facts
   no_log: true
 
 - name: Virtual machines operation.
   block:
     - include: 'folder.yml'
     - include: 'create.yml'
-  when: facts.instance is not defined
+  when: vmware_facts.instance is not defined
