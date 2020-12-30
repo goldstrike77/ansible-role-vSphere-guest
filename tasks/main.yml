@@ -1,8 +1,8 @@
 ---
 - name: Gather guest VM facts from VMware vCenter.
-  vmware_guest_facts:
+  community.vmware.vmware_guest_info:
     name: '{{ inventory_hostname | upper }}'
-    folder: '{{ vcenter_vmdatacenter }}/vm/{{ group_names[0] | title }}/{{ group_names[-1] | title }}'
+    folder: '{{ vcenter_vmdatacenter }}/vm/{{ customer | title }}/{{ group_names[-1] | title }}/{{ group_names[0] | title }}'
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
@@ -17,5 +17,5 @@
 - name: Virtual machines operation.
   block:
     - include: 'folder.yml'
-    - include: 'create.yml'
+    - include: 'vm.yml'
   when: vmware_facts.instance is not defined

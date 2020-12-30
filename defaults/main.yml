@@ -2,6 +2,7 @@
 # General parameters #
 datacenter: 'dc01' # Define the DataCenter.
 domain: 'local' # Define the Domain.
+customer: 'demo' # Define the customer name.
 
 # VMware vSphere vCenter parameters #
 vcenter_hostname: '1.1.1.1' # Defines the hostname or IP address of the vSphere vCenter server.

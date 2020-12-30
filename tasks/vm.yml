@@ -1,13 +1,13 @@
 ---
 - name: Create and Configure a guest VM.
-  vmware_guest:
+  community.vmware.vmware_guest:
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     datacenter: '{{ vcenter_vmdatacenter }}'
     cluster: '{{ vcenter_vmcluster }}'
-    folder: '{{ group_names[0] | title }}/{{ group_names[-1] | title }}'
-    name: '{{ inventory_hostname | upper }}'
+    folder: '{{ customer | title }}/{{ group_names[-1] | title }}/{{ group_names[0] | title }}'
+    name: '{{ inventory_hostname | lower }}'
     template: '{{ vm_template }}'
     validate_certs: 'no'
     state: 'poweredon'
@@ -31,7 +31,7 @@
       dns_servers: '{{ vm_dns_server }}'
       type: 'static'
     customization:
-      hostname: '{{ inventory_hostname | upper }}'
+      hostname: '{{ inventory_hostname | lower }}'
       domain: 'node.{{ datacenter }}.{{ domain }}'
       dns_suffix: '{{ datacenter }}.{{ domain }}'
       dns_servers: '{{ vm_dns_server }}'
